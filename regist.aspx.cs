@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using webDEMOModel;
 
 public partial class re : System.Web.UI.Page
 {
@@ -14,13 +13,14 @@ public partial class re : System.Web.UI.Page
     }
     protected void BtnOK_Click(object sender, EventArgs e)
     {
-        using (var db = new webDEMOEntities())
+        using (var db = new Entities())
         {
             var s = new member();
             s.account = TxtAccout.Text;
             s.password = TxtPassword.Text;
             s.email = TxtEmail.Text;
-            db.member.AddObject(s);  // 添加
+            db.member.Add(s);
+            //db.member.AddObject(s);  // 添加
             //db.member.Detach     删除
             db.SaveChanges();
         }
